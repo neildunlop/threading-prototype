@@ -1,0 +1,10 @@
+
+.project
+
+*.prefs
+
+threading-core/.classpath
+
+*.MF
+
+*.properties

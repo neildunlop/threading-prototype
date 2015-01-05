@@ -29,8 +29,11 @@ public class App2 {
 	private static BlockingQueue<FlightAltitudeUpdate> associatorOutboundQueue = new ArrayBlockingQueue<FlightAltitudeUpdate>(
 			500);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
+		//give us enough time to connect the profiler
+		Thread.sleep(10000);
+		
 		AltitudeUpdateDataGeneratorService dataGeneratorService = new AltitudeUpdateDataGeneratorService(
 				4, 50, associatorInboundQueue);
 		dataGeneratorService.start();

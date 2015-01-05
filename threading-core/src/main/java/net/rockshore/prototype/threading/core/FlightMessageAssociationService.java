@@ -15,14 +15,15 @@ public class FlightMessageAssociationService {
 	BlockingQueue<FlightAltitudeUpdate> outputQueue;
 
 	// list of flights we have seen (ie, whether we should create or update)
-	private static final ConcurrentMap<String, Long> flightList = new ConcurrentHashMap<String, Long>(500, 0.9f, 2);
+	private static final ConcurrentMap<String, Long> flightList = new ConcurrentHashMap<String, Long>(
+			500, 0.9f, 2);
 
 	public FlightMessageAssociationService(int numberOfThreads,
 			BlockingQueue<FlightAltitudeUpdate> inputQueue,
 			BlockingQueue<FlightAltitudeUpdate> outputQueue) {
 
 		super();
-		
+
 		this.inputQueue = inputQueue;
 		this.outputQueue = outputQueue;
 
@@ -38,8 +39,12 @@ public class FlightMessageAssociationService {
 
 	public void start() {
 
-		//while(!inputQueue.isEmpty()) {
-		while(true) {
+		// while(!inputQueue.isEmpty()) {
+		while (true) {
+			if (Thread.currentThread().isInterrupted()) {
+				// Cannot use InterruptedException since it's checked
+				throw new RuntimeException();
+			}
 			executorService.submit(callableFlightAssociator);
 		}
 	}

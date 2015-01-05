@@ -8,3 +8,27 @@ threading-core/.classpath
 *.MF
 
 *.properties
+
+threading-core/target/classes/META-INF/maven/net.rockshore.prototype.threading/threading-core/pom.xml
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/AltitudeMessageProcessingService.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/AltitudeUpdateDataGenerator.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/AltitudeUpdateDataGeneratorService.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/App.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/App2.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/Flight.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/FlightAltitudeUpdate.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/FlightMessageAssociationService.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/FlightMessageAssociator.class
+
+threading-core/target/classes/net/rockshore/prototype/threading/core/FlightMessageProcessingService.class
+
+threading-core/target/test-classes/net/rockshore/threading/prototype/core/InboundDataPipelineTest.class

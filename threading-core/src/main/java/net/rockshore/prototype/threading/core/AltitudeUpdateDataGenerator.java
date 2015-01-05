@@ -43,6 +43,11 @@ public class AltitudeUpdateDataGenerator implements Callable<Object>{
 
 	public Object call() throws InterruptedException {
 		
+		if (Thread.currentThread().isInterrupted()) {
+			// Cannot use InterruptedException since it's checked
+			throw new RuntimeException();
+		}
+		
 		FlightAltitudeUpdate altUpdate = generateAltitudeUpdate();
 		
 		System.out.println("Adding to source Queue from Thread::"

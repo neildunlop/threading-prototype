@@ -1,9 +1,12 @@
 package net.rockshore.prototype.threading.core;
 
+import java.io.IOException;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
+import net.rockshore.prototype.threading.core.logging.MyLogger;
 
 /**
  * Demonstration application that uses a number of threads to create random
@@ -29,13 +32,15 @@ public class App2 {
 	private static BlockingQueue<FlightAltitudeUpdate> associatorOutboundQueue = new ArrayBlockingQueue<FlightAltitudeUpdate>(
 			500);
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 
-		//give us enough time to connect the profiler
-		Thread.sleep(10000);
-		
+		MyLogger.setup();
+
+		// give us enough time to connect the profiler
+		Thread.sleep(30000);
+
 		AltitudeUpdateDataGeneratorService dataGeneratorService = new AltitudeUpdateDataGeneratorService(
-				4, 50, associatorInboundQueue);
+				4, 5000, associatorInboundQueue);
 		dataGeneratorService.start();
 
 		FlightMessageAssociationService associationService = new FlightMessageAssociationService(
